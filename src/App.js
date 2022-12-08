@@ -15,7 +15,7 @@ function App() {
       element: <Inbox />,
     },
     {
-      path: "/mail/:email/:domain/:mailID",
+      path: "/mail/:email/:mailID",
       element: <SingleMail />,
     },
   ]);
