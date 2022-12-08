@@ -5,19 +5,19 @@ import Spiner from "../../Components/Spiner/Spiner";
 
 const SingleMail = () => {
   const [msgs, setMsgs] = useState(null);
-  const { domain, email, mailID } = useParams();
+  const { email, mailID } = useParams();
   console.log(mailID);
   useEffect(() => {
     if (email) {
       fetch(
-        `https://c.digitalproductsbd24.com/api/messages/${email}@${domain}/Ta6Do80ArjghtHyz5GKP`
+        `https://c.digitalproductsbd24.com/api/messages/${email}/Ta6Do80ArjghtHyz5GKP`
       )
         .then((res) => res.json())
         .then((data) =>
           setMsgs(...data.filter((m) => m.id === parseInt(mailID)))
         );
     }
-  }, [email, mailID, domain]);
+  }, [email, mailID]);
 
   if (!msgs) {
     return <Spiner />;

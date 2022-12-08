@@ -5,9 +5,9 @@ const Home = () => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = e.target.email.value.split("@");
-    if (e.target.email.value) {
-      navigate(`/inbox/${email[0]}/${email[1]}`);
+    const email = e.target.email.value;
+    if (email) {
+      navigate(`/inbox/${email}`);
     }
   };
 
