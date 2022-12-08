@@ -1,34 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Nav from "../../Components/Nav/Nav";
-import Spiner from "../../Components/Spiner/Spiner";
+import React from "react";
 
-const SingleMail = () => {
-  const [msgs, setMsgs] = useState(null);
-  const { email, mailID } = useParams();
-  console.log(mailID);
-  useEffect(() => {
-    if (email) {
-      fetch(
-        `https://c.digitalproductsbd24.com/api/messages/${email}/Ta6Do80ArjghtHyz5GKP`
-      )
-        .then((res) => res.json())
-        .then((data) =>
-          setMsgs(...data.filter((m) => m.id === parseInt(mailID)))
-        );
-    }
-  }, [email, mailID]);
-
-  if (!msgs) {
-    return <Spiner />;
-  }
-  console.log(msgs);
-
+const SingleMail = ({ msgs }) => {
   return (
     <>
-      <Nav />
-      <div className="flex justify-center md:pt-12  ">
-        <section className="w-full  border shadow-lg md:w-8/12 mx-auto px-4 flex flex-col bg-white rounded-r-3xl">
+      <div className="flex justify-center   ">
+        <section className="w-full  border   mx-auto px-4 flex flex-col bg-white ">
           <div className="flex justify-between items-center py-5 border-b-2 mb-8 ">
             <div className="flex space-x-4 items-center">
               <div className="flex flex-col">
@@ -39,7 +15,6 @@ const SingleMail = () => {
             <div>
               <ul className=" text-right text-gray-400 space-x-4">
                 <p>{msgs.date}</p>
-
                 <p>{msgs.datediff}</p>
               </ul>
             </div>

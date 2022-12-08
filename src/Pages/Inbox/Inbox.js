@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Nav from "../../Components/Nav/Nav";
 import Spiner from "../../Components/Spiner/Spiner";
+import SingleMail from "../SingelMail/SingelMail";
 
 const Inbox = () => {
   const [msgs, setMsgs] = useState(null);
@@ -35,17 +36,28 @@ const Inbox = () => {
               </p>
             )}
             {msgs.map((msg) => (
-              <Link key={msg.id} to={`/mail/${email}/${msg.id}`}>
-                <li className="py-5 border-b px-3 transition hover:bg-indigo-100">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold">{msg.sender_name}</h3>
-                    <p className="text-md text-gray-400">{msg.datediff}</p>
-                  </div>
-                  <div className="text-md italic text-gray-400">
-                    {msg.subject}
-                  </div>
-                </li>
-              </Link>
+              <>
+                <details key={msg.id} className="w-full   rounded-lg">
+                  <summary className="px-4 block py-6 focus:outline-none focus-visible:ring-violet-400">
+                    <div>
+                      <div className="py-5 border-b px-3 transition hover:bg-indigo-100">
+                        <div className="flex justify-between items-center">
+                          <h3 className="text-lg font-semibold">
+                            {msg.sender_name}
+                          </h3>
+                          <p className="text-md text-gray-400">
+                            {msg.datediff}
+                          </p>
+                        </div>
+                        <div className="text-md italic text-gray-400">
+                          {msg.subject}
+                        </div>
+                      </div>
+                    </div>
+                  </summary>
+                  <SingleMail msgs={msg} />
+                </details>
+              </>
             ))}
           </ul>
         </section>
