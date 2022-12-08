@@ -37,10 +37,10 @@ const Inbox = () => {
             {msgs.map((msg) => (
               <Link key={msg.id} to={`/mail/${email}/${msg.id}`}>
                 <li className="py-5 border-b px-3 transition hover:bg-indigo-100">
-                  <a href="/" className="flex justify-between items-center">
+                  <div className="flex justify-between items-center">
                     <h3 className="text-lg font-semibold">{msg.sender_name}</h3>
                     <p className="text-md text-gray-400">{msg.datediff}</p>
-                  </a>
+                  </div>
                   <div className="text-md italic text-gray-400">
                     {msg.subject}
                   </div>
