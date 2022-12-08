@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import Home from "./Pages/Home/Home";
 import Inbox from "./Pages/Inbox/Inbox";
 import SingleMail from "./Pages/SingelMail/SingelMail";
@@ -20,7 +19,7 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
