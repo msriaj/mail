@@ -11,7 +11,7 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/inbox/:user/:domain",
+      path: "/inbox/:email",
       element: <Inbox />,
     },
     {

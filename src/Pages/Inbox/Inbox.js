@@ -5,14 +5,15 @@ import Spiner from "../../Components/Spiner/Spiner";
 
 const Inbox = () => {
   const [msgs, setMsgs] = useState(null);
-  const { user, domain } = useParams();
+  const { email } = useParams();
+
   useEffect(() => {
     fetch(
-      `https://c.digitalproductsbd24.com/api/messages/${user}@${domain}/Ta6Do80ArjghtHyz5GKP`
+      `https://c.digitalproductsbd24.com/api/messages/${email}/Ta6Do80ArjghtHyz5GKP`
     )
       .then((res) => res.json())
       .then((data) => setMsgs(data));
-  }, [user, domain]);
+  }, [email]);
 
   if (!msgs) {
     return <Spiner />;
@@ -25,7 +26,7 @@ const Inbox = () => {
         <section className="flex flex-col pt-3 w-full md:w-7/12 mx-auto shadow-lg bg-gray-50 h-full  ">
           <div className="p-5">
             <p className="text-gray-400">Inbox Of</p>
-            <h1 className="text-2xl text-gray-500">{user}</h1>
+            <h1 className="text-2xl text-gray-500">{email}</h1>
           </div>
           <ul className="mt-6">
             {!msgs.length && (
@@ -34,7 +35,7 @@ const Inbox = () => {
               </p>
             )}
             {msgs.map((msg) => (
-              <Link key={msg.id} to={`/mail/${user}/${domain}/${msg.id}`}>
+              <Link key={msg.id} to={`/mail/${email}/${msg.id}`}>
                 <li className="py-5 border-b px-3 transition hover:bg-indigo-100">
                   <a href="/" className="flex justify-between items-center">
                     <h3 className="text-lg font-semibold">{msg.sender_name}</h3>
