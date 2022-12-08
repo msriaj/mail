@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import Inbox from "./Pages/Inbox/Inbox";
-import SingleMail from "./Pages/SingelMail/SingelMail";
 
 function App() {
   const routes = createBrowserRouter([
@@ -13,10 +12,6 @@ function App() {
     {
       path: "/inbox/:email",
       element: <Inbox />,
-    },
-    {
-      path: "/mail/:email/:mailID",
-      element: <SingleMail />,
     },
   ]);
 
